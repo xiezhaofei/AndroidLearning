@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,15 +20,25 @@
 
         <activity
             android:name=".learningcode.ipc.SecondActivity"
-            android:process=":remote">
+            android:process=":remote"></activity>
 
-        </activity>
+        <activity android:name=".learningcode.ipc.contentprovider.ActBookProvider" />
+
+        <activity android:name=".learningcode.viewevent.ActViewEvent" />
+
+        <activity android:name=".learningcode.recycleview.ActRecycleView" />
+
+        <activity android:name=".learningcode.tmp.TmpActivity" />
 
         <provider
-            android:name="learningcode.ipc.contentprovider.BookProvider"
-            android:process=":provider"
+            android:name="com.android.androidlearning.learningcode.ipc.contentprovider.BookProvider"
+            android:authorities="com.android.androidlearning.learningcode.ipc.contentprovider.BookProvider"
+            android:exported="false"
             android:permission="com.lgl.PROVIDER"
-            android:authorities="com.android.androidlearning.learningcode.ipc.contentprovider.BookProvider" />
+            android:process=":remote" />
     </application>
+
+    <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
+    <uses-permission android:name="com.lgl.PROVIDER"></uses-permission>
 
 </manifest>

@@ -10,7 +10,7 @@ public class ALLog {
     }
 
     public static void d(String tag, String msg) {
-        System.out.println(tag + ": " + msg);
+        System.out.println("ALLog => " + tag + ": " + msg);
     }
 
     public static void e(String tag, String msg) {
