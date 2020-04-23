@@ -9,11 +9,19 @@ import android.os.Parcelable;
  * Describe:
  */
 public class Book implements Parcelable {
+    public String name;
+
+    public Book(String name) {
+        this.name = name;
+    }
+
     protected Book(Parcel in) {
+        name = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
     }
 
     @Override

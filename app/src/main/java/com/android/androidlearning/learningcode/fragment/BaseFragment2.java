@@ -1,4 +1,4 @@
-package com.android.androidlearning;
+package com.android.androidlearning.learningcode.fragment;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,24 +8,25 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import com.android.androidlearning.R;
 
 /**
- * Created by xiezhaofei on 2019-12-04
+ * Created by xiezhaofei on 2020-01-08
  * <p>
  * Describe:
  */
-public abstract class BaseActivity2 extends BaseActivity {
-
+public class BaseFragment2 extends BaseFragment {
     FrameLayout mFraContainer;
 
     LinearLayout mItemContainer;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_base);
+    protected int getLayoutId() {
+        return R.layout.act_base;
+    }
+
+    @Override
+    protected void initViews() {
         mFraContainer = findViewById(R.id.fra_container);
         mItemContainer = findViewById(R.id.ll_item);
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
@@ -34,15 +35,30 @@ public abstract class BaseActivity2 extends BaseActivity {
                 back();
             }
         });
-        initViews();
+    }
+
+    @Override
+    protected void initValues(Bundle savedInstanceState) {
+
     }
 
     protected void addButton(String text, View.OnClickListener listener) {
-        Button button = new Button(this);
+        Button button = new Button(getContext());
         button.setText(text);
-        button.setAllCaps(false);
         button.setOnClickListener(listener);
         mItemContainer.addView(button, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+    }
+
+    protected View getButton(String text) {
+        int count = mItemContainer.getChildCount();
+        View view = null;
+        for (int i = 0; i < count; i++) {
+            if (((TextView) mItemContainer.getChildAt(i)).getText().equals(text)) {
+                view = mItemContainer.getChildAt(i);
+                break;
+            }
+        }
+        return view;
     }
 
     protected void removeButton(String text) {
@@ -57,39 +73,9 @@ public abstract class BaseActivity2 extends BaseActivity {
         mItemContainer.removeView(view);
     }
 
-
-    protected View getButton(String text) {
-        int count = mItemContainer.getChildCount();
-        View view = null;
-        for (int i = 0; i < count; i++) {
-            if (((TextView) mItemContainer.getChildAt(i)).getText().equals(text)) {
-                view = mItemContainer.getChildAt(i);
-                break;
-            }
-        }
-        return view;
-    }
-
-    private Fragment mCurFragment;
-
-    protected void startFragment(Fragment fragment) {
-        mCurFragment = fragment;
-        getSupportFragmentManager().beginTransaction().add(R.id.fra_container, fragment).commit();
-    }
-
-    protected boolean removeCurFragment() {
-        if (mCurFragment != null) {
-            getSupportFragmentManager().beginTransaction().remove(mCurFragment).commit();
-            mCurFragment = null;
-            return true;
-        }
-        return false;
-    }
-
-    protected abstract void initViews();
-
     protected void back() {
 
     }
+
 
 }

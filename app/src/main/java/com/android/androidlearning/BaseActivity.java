@@ -1,6 +1,7 @@
 package com.android.androidlearning;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 
 import androidx.fragment.app.FragmentActivity;
@@ -31,6 +32,10 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         Intent intent = new Intent();
         intent.setClass(this, clazz);
         startActivity(intent);
+    }
+
+    protected void trace(String msg) {
+        Log.d(TAG, msg);
     }
 
 

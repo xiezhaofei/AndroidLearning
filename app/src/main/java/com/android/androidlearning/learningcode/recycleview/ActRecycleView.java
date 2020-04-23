@@ -41,6 +41,22 @@ public class ActRecycleView extends BaseActivity {
         list.add(fruit2);
         list.add(fruit3);
         list.add(fruit4);
+        list.add(fruit1);
+        list.add(fruit2);
+        list.add(fruit3);
+        list.add(fruit4);
+        list.add(fruit1);
+        list.add(fruit2);
+        list.add(fruit3);
+        list.add(fruit4);
+        list.add(fruit1);
+        list.add(fruit2);
+        list.add(fruit3);
+        list.add(fruit4);
+        list.add(fruit1);
+        list.add(fruit2);
+        list.add(fruit3);
+        list.add(fruit4);
         FruitAdapter adapter = new FruitAdapter(list);
 //        mRecyclerView.setAdapter(adapter);
 
@@ -88,6 +104,7 @@ public class ActRecycleView extends BaseActivity {
         public int getItemCount() {
             return fruits.size();
         }
+
     }
 
 

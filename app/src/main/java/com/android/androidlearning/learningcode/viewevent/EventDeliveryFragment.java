@@ -23,18 +23,20 @@ public class EventDeliveryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FrameLayout layout = (FrameLayout) inflater.inflate(R.layout.fra_event_delivery, container, false);
 
-//        layout.findViewById(R.id.viewgroup);
+        MViewGroup viewGroup = layout.findViewById(R.id.viewgroup);
+        viewGroup.setFlag("MViewGroup");
 
         MView view = ((MView) layout.findViewById(R.id.view));
+        view.setOnTouchEventResult(true);
 //        viewGroup.setOnInterceptResult(true);
 
 
         MView view1 = layout.findViewById(R.id.view1);
         view1.setFlag("MView1");
-        view1.setOnTouchEventResult(true);
+//        view1.setOnTouchEventResult(true);
 
-//        MView view2 = layout.findViewById(R.id.view2);
-//        view2.setFlag("MView2");
+        MView view2 = layout.findViewById(R.id.view2);
+        view2.setFlag("MView2");
 
         return layout;
     }

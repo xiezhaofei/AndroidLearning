@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -38,7 +39,21 @@
         android:id="@+id/btn_tmp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="tmp"
+        android:text="code test"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_view_inflate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="view inflater"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_common"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="common"
         android:textAllCaps="false" />
 
 

@@ -18,9 +18,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".learningcode.ipc.SecondActivity"
-            android:process=":remote"></activity>
+        <activity android:name=".learningcode.ipc.IPCActivity"></activity>
 
         <activity android:name=".learningcode.ipc.contentprovider.ActBookProvider" />
 
@@ -30,15 +28,26 @@
 
         <activity android:name=".learningcode.tmp.TmpActivity" />
 
+        <activity android:name=".learningcode.ipc.IPCActivity2" />
+
+        <activity android:name=".CommonActivity"/>
+
         <provider
             android:name="com.android.androidlearning.learningcode.ipc.contentprovider.BookProvider"
             android:authorities="com.android.androidlearning.learningcode.ipc.contentprovider.BookProvider"
             android:exported="false"
             android:permission="com.lgl.PROVIDER"
             android:process=":remote" />
+
+        <service android:name=".learningcode.service.RemoteService" />
+        <!--            android:process=":remote" />-->
+
     </application>
 
     <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
     <uses-permission android:name="com.lgl.PROVIDER"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

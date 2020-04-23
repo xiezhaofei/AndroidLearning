@@ -25,7 +25,6 @@ public class ActBookProvider extends BaseActivity {
         boolean relative = uri.isRelative();
         ALLog.d("xzf", "relative:" + relative);
         ContentProviderClient client = getContentResolver().acquireUnstableContentProviderClient(uri);
-//        getContentResolver().insert(uri, null);
         ALLog.d("xzf", "client:" + client);
         getContentResolver().query(uri, null, null, null, null);
         getContentResolver().query(uri, null, null, null, null);

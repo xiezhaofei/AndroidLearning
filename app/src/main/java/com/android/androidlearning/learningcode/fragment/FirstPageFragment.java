@@ -41,6 +41,8 @@ public class FirstPageFragment extends Fragment {
         list.add("school");
         list.add("company");
         mGridView.setAdapter(new MAdapter(list));
+
+
         return view;
     }
 

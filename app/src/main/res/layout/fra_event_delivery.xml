@@ -11,7 +11,7 @@
 
     <view
         android:id="@+id/viewgroup"
-        class="com.android.androidlearning.learningcode.viewevent.MScrollView"
+        class="com.android.androidlearning.learningcode.viewevent.MViewGroup"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@android:color/holo_blue_dark">
@@ -21,23 +21,25 @@
             android:id="@+id/view1"
             class="com.android.androidlearning.learningcode.viewevent.MView"
             android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:background="@android:color/darker_gray" />
 
-        <!--        <view-->
-        <!--            android:id="@+id/view2"-->
-        <!--            class="com.android.androidlearning.learningcode.viewevent.MView"-->
-        <!--            android:layout_width="150dp"-->
-        <!--            android:layout_height="100dp"-->
-        <!--            android:background="@android:color/background_dark" />-->
+                <view
+                    android:id="@+id/view2"
+                    class="com.android.androidlearning.learningcode.viewevent.MView"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:background="@android:color/background_dark" />
+
+        <view
+            android:id="@+id/view"
+            class="com.android.androidlearning.learningcode.viewevent.MView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@android:color/holo_green_dark" />
 
     </view>
 
-    <view
-        android:id="@+id/view"
-        class="com.android.androidlearning.learningcode.viewevent.MView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@android:color/holo_green_dark" />
+
 
 </FrameLayout>
