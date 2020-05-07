@@ -21,9 +21,13 @@ public class TestDynamicProxyFragment extends BaseFragment2 {
         addButton("test", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Sell sell = new SellImpl();
+
                 DynamicProxy dynamicProxy = new DynamicProxy(sell);
+
                 Sell seeProxy = (Sell) (Proxy.newProxyInstance(Sell.class.getClassLoader(), new Class[]{Sell.class}, dynamicProxy));
+
                 seeProxy.sell();
 
                 try {

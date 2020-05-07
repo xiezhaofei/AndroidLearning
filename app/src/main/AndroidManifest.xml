@@ -30,7 +30,9 @@
 
         <activity android:name=".learningcode.ipc.IPCActivity2" />
 
-        <activity android:name=".CommonActivity"/>
+        <activity android:name=".CommonActivity" />
+
+        <activity android:name=".WidgetActivity" />
 
         <provider
             android:name="com.android.androidlearning.learningcode.ipc.contentprovider.BookProvider"
@@ -43,6 +45,7 @@
         <!--            android:process=":remote" />-->
 
     </application>
+
 
     <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
     <uses-permission android:name="com.lgl.PROVIDER"></uses-permission>

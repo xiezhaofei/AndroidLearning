@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fView(R.id.btn_tmp);
         fView(R.id.btn_view_inflate);
         fView(R.id.btn_common);
+        fView(R.id.btn_widget);
     }
 
     @Override
@@ -46,9 +47,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startFragment(new ViewInflateFragment());
         } else if (id == R.id.btn_common) {
             startAct(CommonActivity.class);
+        } else if (id == R.id.btn_widget) {
+            startAct(WidgetActivity.class);
         }
     }
-
 
 
     private void fView(int id) {

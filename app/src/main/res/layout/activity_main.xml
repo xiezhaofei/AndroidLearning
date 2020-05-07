@@ -56,5 +56,12 @@
         android:text="common"
         android:textAllCaps="false" />
 
+    <Button
+        android:id="@+id/btn_widget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="widget"
+        android:textAllCaps="false" />
+
 
 </LinearLayout>

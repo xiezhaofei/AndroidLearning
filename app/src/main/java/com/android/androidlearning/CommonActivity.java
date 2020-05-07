@@ -4,10 +4,12 @@ import android.view.View;
 
 import com.android.androidlearning.learningcode.animation.ViewAnimationFragment;
 import com.android.androidlearning.learningcode.annotation.TestAnnotationFragment;
+import com.android.androidlearning.learningcode.glide.TestGlideFragment;
 import com.android.androidlearning.learningcode.listview.TestListViewFragment;
 import com.android.androidlearning.learningcode.lock.LockTestFragment;
 import com.android.androidlearning.learningcode.okhttp.TestOKhttpFragment;
 import com.android.androidlearning.learningcode.proxy.TestDynamicProxyFragment;
+import com.android.androidlearning.learningcode.view.TestConstrainLayoutFragment;
 
 /**
  * Created by xiezhaofei on 2020-02-29
@@ -15,10 +17,10 @@ import com.android.androidlearning.learningcode.proxy.TestDynamicProxyFragment;
  * Describe:
  */
 public class CommonActivity extends BaseActivity2 {
+
     @Override
     protected void initViews() {
         //CommonActivityConfigs.add("listview", TestListViewFragment.class);
-
 
         System.setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         addButton("view动画", new View.OnClickListener() {
@@ -57,6 +59,19 @@ public class CommonActivity extends BaseActivity2 {
             @Override
             public void onClick(View v) {
                 startFragment(new LockTestFragment());
+            }
+        });
+
+        addButton("glide", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startFragment(new TestGlideFragment());
+            }
+        });
+        addButton("constrainlayout", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startFragment(new TestConstrainLayoutFragment());
             }
         });
     }
