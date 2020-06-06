@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.androidlearning.BaseActivity;
 import com.android.androidlearning.R;
 import com.android.androidlearning.utils.ALLog;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,7 @@ import java.util.List;
  */
 public class ActRecycleView extends BaseActivity {
     RecyclerView mRecyclerView;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,6 +67,20 @@ public class ActRecycleView extends BaseActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(adapter);
+
+        RefreshLayout refreshLayout = (RefreshLayout)findViewById(R.id.refreshLayout);
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000/*,false*/);//传入false表示刷新失败
+            }
+        });
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadMore(2000/*,false*/);//传入false表示加载失败
+            }
+        });
     }
 
     class FruitHolder extends RecyclerView.ViewHolder {

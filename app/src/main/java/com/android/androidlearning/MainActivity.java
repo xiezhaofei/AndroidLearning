@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.android.androidlearning.kotlin.KotlinActivity;
 import com.android.androidlearning.learningcode.fragment.ViewInflateFragment;
 import com.android.androidlearning.learningcode.ipc.IPCActivity;
 import com.android.androidlearning.learningcode.ipc.contentprovider.ActBookProvider;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fView(R.id.btn_view_inflate);
         fView(R.id.btn_common);
         fView(R.id.btn_widget);
+        fView(R.id.btn_kotlin);
     }
 
     @Override
@@ -49,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startAct(CommonActivity.class);
         } else if (id == R.id.btn_widget) {
             startAct(WidgetActivity.class);
+        } else if (id == R.id.btn_kotlin) {
+            startAct(KotlinActivity.class);
         }
     }
 

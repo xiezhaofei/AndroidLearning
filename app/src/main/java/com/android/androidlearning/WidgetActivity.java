@@ -3,6 +3,7 @@ package com.android.androidlearning;
 import android.view.View;
 
 import com.android.androidlearning.learningcode.fragment.TestStickerEditGroupFragment;
+import com.android.androidlearning.learningcode.widget.TestCicleImageViewFragment;
 
 /**
  * Created by xiezhaofei on 2020/4/29
@@ -18,5 +19,12 @@ public class WidgetActivity extends BaseActivity2 {
                 startFragment(new TestStickerEditGroupFragment());
             }
         });
+        addButton("圆角图片", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startFragment(new TestCicleImageViewFragment());
+            }
+        });
+
     }
 }

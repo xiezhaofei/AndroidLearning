@@ -10,6 +10,7 @@ import com.android.androidlearning.learningcode.lock.LockTestFragment;
 import com.android.androidlearning.learningcode.okhttp.TestOKhttpFragment;
 import com.android.androidlearning.learningcode.proxy.TestDynamicProxyFragment;
 import com.android.androidlearning.learningcode.view.TestConstrainLayoutFragment;
+import com.android.androidlearning.learningcode.viewpager.TestViewPagerFragment;
 
 /**
  * Created by xiezhaofei on 2020-02-29
@@ -72,6 +73,13 @@ public class CommonActivity extends BaseActivity2 {
             @Override
             public void onClick(View v) {
                 startFragment(new TestConstrainLayoutFragment());
+            }
+        });
+
+        addButton("viewpager+fragment", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startFragment(new TestViewPagerFragment());
             }
         });
     }

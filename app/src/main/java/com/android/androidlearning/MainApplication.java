@@ -6,6 +6,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.chenenyu.router.Router;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -26,6 +27,8 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+
         refWatcher = LeakCanary.install(this);
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override

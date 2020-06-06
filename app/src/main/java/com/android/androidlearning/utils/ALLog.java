@@ -1,5 +1,10 @@
 package com.android.androidlearning.utils;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import kotlin.Unit;
+
 /**
  * Created by xiezhaofei on 2019-10-31
  * <p>
@@ -17,4 +22,7 @@ public class ALLog {
 
     }
 
+    public static void d(@Nullable String tag, @NotNull Unit foo) {
+
+    }
 }

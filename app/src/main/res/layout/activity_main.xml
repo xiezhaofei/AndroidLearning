@@ -63,5 +63,26 @@
         android:text="widget"
         android:textAllCaps="false" />
 
+    <Button
+        android:id="@+id/btn_kotlin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="kotlin学习"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/video_introduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="12dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:singleLine="false"
+        android:text="好心帮助陌生人却发生这种事，让人难以接受！好心帮助陌生人却发生这种事，让人难以接受！好心帮助陌生人却发生这种事，让人难以接受！让人难以接受让人难以接受"
+        android:textColor="#ffc6c6c6"
+        android:textSize="15sp" />
+
 
 </LinearLayout>

@@ -7,9 +7,22 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:maxAspectRatio="2.4"
+        android:resizeableActivity="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.4" />
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
+        <!--适配小米（xiaomi）刘海屏-->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,6 +46,8 @@
         <activity android:name=".CommonActivity" />
 
         <activity android:name=".WidgetActivity" />
+
+        <activity android:name=".kotlin.KotlinActivity" />
 
         <provider
             android:name="com.android.androidlearning.learningcode.ipc.contentprovider.BookProvider"

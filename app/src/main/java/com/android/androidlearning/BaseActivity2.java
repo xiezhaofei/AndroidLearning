@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.gyf.immersionbar.ImmersionBar;
+
 /**
  * Created by xiezhaofei on 2019-12-04
  * <p>
@@ -25,6 +27,9 @@ public abstract class BaseActivity2 extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.colorPrimary)
+                .init();
         setContentView(R.layout.act_base);
         mFraContainer = findViewById(R.id.fra_container);
         mItemContainer = findViewById(R.id.ll_item);

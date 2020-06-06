@@ -46,7 +46,8 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void trace(String msg) {
-        Log.d(TAG, msg);
+//        Log.d(TAG, msg);
+        System.out.println(TAG + " " + msg);
     }
 
 

@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 28
@@ -31,4 +33,27 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+    //github库 沉浸式适配
+    // 基础依赖包，必须要依赖
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    // fragment快速实现（可选）
+    implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+    // kotlin扩展（可选）
+    implementation 'com.gyf.immersionbar:immersionbar-ktx:3.0.0'
+
+    //下拉刷新，上拉加载
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'  //1.0.5及以前版本的老用户升级需谨慎，API改动过大
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.2'  //没有使用特殊Header，可以不加这行
+
+    //router
+//    implementation 'com.chenenyu.router:router:1.7.4'
+//    annotationProcessor 'com.chenenyu.router:compiler:1.4.0-beta1'
+
+}
+repositories {
+    mavenCentral()
 }
