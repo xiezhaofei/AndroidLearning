@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.android.androidlearning.R;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by xiezhaofei on 2020-01-08
  * <p>
