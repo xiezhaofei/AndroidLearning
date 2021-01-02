@@ -8,6 +8,7 @@ import com.android.androidlearning.learningcode.glide.TestGlideFragment;
 import com.android.androidlearning.learningcode.listview.TestListViewFragment;
 import com.android.androidlearning.learningcode.lock.LockTestFragment;
 import com.android.androidlearning.learningcode.okhttp.TestOKhttpFragment;
+import com.android.androidlearning.learningcode.permissions.TestPermissionsFragment;
 import com.android.androidlearning.learningcode.proxy.TestDynamicProxyFragment;
 import com.android.androidlearning.learningcode.view.TestConstrainLayoutFragment;
 import com.android.androidlearning.learningcode.viewpager.TestViewPagerFragment;
@@ -80,6 +81,13 @@ public class CommonActivity extends BaseActivity2 {
             @Override
             public void onClick(View v) {
                 startFragment(new TestViewPagerFragment());
+            }
+        });
+
+        addButton("权限管理", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startFragment(new TestPermissionsFragment());
             }
         });
     }

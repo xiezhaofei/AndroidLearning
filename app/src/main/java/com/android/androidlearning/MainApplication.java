@@ -6,9 +6,9 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.chenenyu.router.Router;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
+//import com.chenenyu.router.Router;
+//import com.squareup.leakcanary.LeakCanary;
+//import com.squareup.leakcanary.RefWatcher;
 
 /**
  * Created by xiezhaofei on 2019-10-31
@@ -17,55 +17,55 @@ import com.squareup.leakcanary.RefWatcher;
  */
 public class MainApplication extends Application {
 
-    public static RefWatcher getRefWatcher(Context context) {
-        MainApplication application = (MainApplication) context.getApplicationContext();
-        return application.refWatcher;
-    }
-
-    private RefWatcher refWatcher;
+//    public static RefWatcher getRefWatcher(Context context) {
+//        MainApplication application = (MainApplication) context.getApplicationContext();
+//        return application.refWatcher;
+//    }
+//
+//    private RefWatcher refWatcher;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
 
-        refWatcher = LeakCanary.install(this);
-        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
-            @Override
-            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-
-            }
-
-            @Override
-            public void onActivityStarted(Activity activity) {
-
-            }
-
-            @Override
-            public void onActivityResumed(Activity activity) {
-
-            }
-
-            @Override
-            public void onActivityPaused(Activity activity) {
-
-            }
-
-            @Override
-            public void onActivityStopped(Activity activity) {
-
-            }
-
-            @Override
-            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-
-            }
-
-            @Override
-            public void onActivityDestroyed(Activity activity) {
-
-            }
-        });
+//        refWatcher = LeakCanary.install(this);
+//        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+//            @Override
+//            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+//
+//            }
+//
+//            @Override
+//            public void onActivityStarted(Activity activity) {
+//
+//            }
+//
+//            @Override
+//            public void onActivityResumed(Activity activity) {
+//
+//            }
+//
+//            @Override
+//            public void onActivityPaused(Activity activity) {
+//
+//            }
+//
+//            @Override
+//            public void onActivityStopped(Activity activity) {
+//
+//            }
+//
+//            @Override
+//            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+//
+//            }
+//
+//            @Override
+//            public void onActivityDestroyed(Activity activity) {
+//
+//            }
+//        });
     }
 
     private String getCurProcessName() {
