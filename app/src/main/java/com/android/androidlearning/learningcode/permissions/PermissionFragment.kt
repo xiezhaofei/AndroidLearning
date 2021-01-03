@@ -1,5 +1,6 @@
 package com.android.androidlearning.learningcode.permissions
 
+import android.app.Fragment
 import android.content.ComponentCallbacks
 import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
@@ -54,7 +55,7 @@ class PermissionFragment : Fragment() {
         for (i in (permissions.indices)) {
             stringBuffer.append(permissions[i]).append(" is granted ").append(grantResults[i] == 0)
         }
-        Log.d(TAG, stringBuffer.toString())
+        Log.d(TAG, "onRequestPermissionsResult $stringBuffer")
         callback?.let {
             val grantedList = ArrayList<String>()
             val deniedList = ArrayList<String>()
@@ -65,8 +66,8 @@ class PermissionFragment : Fragment() {
                     deniedList.add(permissions[i])
                 }
             }
-            it.onGranted(grantedList,deniedList.isEmpty())
-            it.onDenied(deniedList,grantedList.isEmpty())
+            it.onGranted(grantedList)
+            it.onDenied(deniedList)
         }
         activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitNowAllowingStateLoss()
     }

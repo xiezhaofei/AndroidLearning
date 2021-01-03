@@ -42,10 +42,23 @@ class PermissionsRequesterImpl {
                 Log.d(TAG, "return directly")
                 return
             } else {
-                val fragment = PermissionFragment.newInstance(mPermissions.toTypedArray(), 100)
-                fragment.setPermissionCallback(callback)
-                activity.supportFragmentManager.beginTransaction().add(fragment, "PermissionFragment").commitNowAllowingStateLoss()
-                Log.d(TAG, "try to request permissions")
+                var allGranted = true
+                for (i in mPermissions.indices) {
+                    if (!PermissionUtil.isGranted(activity, mPermissions[i])) {
+                        allGranted = false
+                        break
+                    }
+                }
+                if (allGranted) {
+                    Log.d(TAG, "all granted")
+                    callback.onGranted(mPermissions)
+                    callback.onDenied(listOf())
+                } else {
+                    val fragment = PermissionFragment.newInstance(mPermissions.toTypedArray(), 100)
+                    fragment.setPermissionCallback(callback)
+                    activity.supportFragmentManager.beginTransaction().add(fragment, "PermissionFragment").commitNowAllowingStateLoss()
+                    Log.d(TAG, "try to request permissions")
+                }
             }
 
         } ?: let {
@@ -55,13 +68,11 @@ class PermissionsRequesterImpl {
 
     interface OnPermissionCallback {
         fun onGranted(
-                permissions: List<String>,
-                all: Boolean
+                permissions: List<String>
         )
 
         fun onDenied(
-                permissions: List<String>,
-                never: Boolean
+                permissions: List<String>
         )
     }
 }

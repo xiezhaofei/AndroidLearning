@@ -9,13 +9,14 @@ class TestPermissionsFragment : BaseFragment2() {
         super.initViews()
         addButton("请求camera权限") {
             activity?.let {
-                PermissionsRequesterImpl.with(it).permission(Manifest.permission.CAMERA).request(object : PermissionsRequesterImpl.OnPermissionCallback {
-                    override fun onGranted(permissions: List<String>, all: Boolean) {
-                        Log.d("TestPermissionsFragment", "onGranted all:$all")
+                var array: Array<String> = arrayOf(Manifest.permission.CAMERA, Manifest.permission.SYSTEM_ALERT_WINDOW)
+                PermissionsRequesterImpl.with(it).permission(array).request(object : PermissionsRequesterImpl.OnPermissionCallback {
+                    override fun onGranted(permissions: List<String>) {
+                        Log.d("TestPermissionsFragment", "onGranted")
                     }
 
-                    override fun onDenied(permissions: List<String>, never: Boolean) {
-                        Log.d("TestPermissionsFragment", "onDenied never:$never")
+                    override fun onDenied(permissions: List<String>) {
+                        Log.d("TestPermissionsFragment", "onDenied")
                     }
 
                 })
