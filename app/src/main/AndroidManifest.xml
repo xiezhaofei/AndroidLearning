@@ -79,6 +79,8 @@
 
         <activity android:name=".kotlin.KotlinActivity" />
 
+        <activity android:name=".TestSheetActivity" />
+
         <provider
             android:name="com.android.androidlearning.learningcode.ipc.contentprovider.BookProvider"
             android:authorities="com.android.androidlearning.learningcode.ipc.contentprovider.BookProvider"

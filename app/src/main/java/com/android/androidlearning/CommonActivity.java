@@ -1,5 +1,6 @@
 package com.android.androidlearning;
 
+import android.util.Log;
 import android.view.View;
 
 import com.android.androidlearning.learningcode.animation.ViewAnimationFragment;
@@ -7,10 +8,12 @@ import com.android.androidlearning.learningcode.annotation.TestAnnotationFragmen
 import com.android.androidlearning.learningcode.glide.TestGlideFragment;
 import com.android.androidlearning.learningcode.listview.TestListViewFragment;
 import com.android.androidlearning.learningcode.lock.LockTestFragment;
+import com.android.androidlearning.learningcode.material.TestSheetBehaviorFragment;
 import com.android.androidlearning.learningcode.okhttp.TestOKhttpFragment;
 import com.android.androidlearning.learningcode.permissions.TestPermissionsFragment;
 import com.android.androidlearning.learningcode.proxy.TestDynamicProxyFragment;
 import com.android.androidlearning.learningcode.view.TestConstrainLayoutFragment;
+import com.android.androidlearning.learningcode.view.TestMyViewFragment;
 import com.android.androidlearning.learningcode.viewpager.TestViewPagerFragment;
 
 /**
@@ -90,5 +93,34 @@ public class CommonActivity extends BaseActivity2 {
                 startFragment(new TestPermissionsFragment());
             }
         });
+        addButton("自定义view", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startFragment(new TestMyViewFragment());
+            }
+        });
+        addButton("测试sheet", new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startFragment(new TestSheetBehaviorFragment());
+            }
+        });
+
+        addButton("sheet",
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startAct(TestSheetActivity.class);
+                    }
+                });
+
+        addButton("字符串格式", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("xzf",String.format("Estimated amount: %s%.2f","ddd",0.05));
+            }
+        });
+
     }
 }
