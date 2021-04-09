@@ -39,4 +39,6 @@ object PermissionUtil {
                 Manifest.permission.ACCESS_NOTIFICATION_POLICY == permission ||
                 Manifest.permission.WRITE_SETTINGS == permission
     }
+
+
 }
