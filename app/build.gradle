@@ -7,7 +7,7 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.android.androidlearning"
-        minSdkVersion 18
+        minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -53,6 +53,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:1.0.0"
     implementation "com.google.android.material:material:1.0.0"
 
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+
     //router
 //    implementation 'com.chenenyu.router:router:1.7.4'
 //    annotationProcessor 'com.chenenyu.router:compiler:1.4.0-beta1'
@@ -61,3 +63,24 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+class TestPlugin implements Plugin<Project> {
+
+    @Override
+    void apply(Project project) {
+        print("hello world test plugins")
+        project.tasks.create("testtask",TestTask.class)
+    }
+}
+
+class TestTask extends DefaultTask{
+    @Override
+    Task doFirst(Action<? super Task> action) {
+        print("hello world test task")
+        return super.doFirst(action)
+    }
+}
+
+apply plugin: TestPlugin
+
+

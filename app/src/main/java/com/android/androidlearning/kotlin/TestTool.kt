@@ -6,4 +6,16 @@ package com.android.androidlearning.kotlin
  * Describe:
  */
 class TestTool {
+
+    private val testlist = ArrayList<String>()
+
+    fun out() {
+        println("xzf ${testlist.size}")
+        if (testlist.isNotEmpty()) {
+            testlist.forEach {
+                println("xzf $it")
+            }
+        }
+    }
+
 }

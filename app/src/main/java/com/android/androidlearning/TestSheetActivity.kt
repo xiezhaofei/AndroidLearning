@@ -64,6 +64,19 @@ class TestSheetActivity : AppCompatActivity() {
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view as TextView
+
+        companion object{
+            val name: String by lazy {
+                println("hello world")
+                "fuck you"
+            }
+        }
+
+
+
+        init {
+            println(name)
+        }
     }
 
     class MyAdapter : RecyclerView.Adapter<MyViewHolder>() {

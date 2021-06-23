@@ -1,2 +1,7 @@
+//include ':buildSrc'
+//include ':buildSrc'
+//include ':myapplication'
+//include ':benchmark'
+//include ':MyPlugin'
 include ':app'
 rootProject.name='AndroidLearning'

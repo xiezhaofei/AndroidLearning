@@ -1,13 +1,17 @@
 package com.android.androidlearning.learningcode.recycleview;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NavUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +44,7 @@ public class ActRecycleView extends BaseActivity {
         Fruit fruit2 = new Fruit("桃子", 9);
         Fruit fruit3 = new Fruit("西瓜", 29);
         Fruit fruit4 = new Fruit("樱桃", 20);
-        List<Fruit> list = new ArrayList<>();
+        final List<Fruit> list = new ArrayList<>();
         list.add(fruit1);
         list.add(fruit2);
         list.add(fruit3);
@@ -61,31 +65,87 @@ public class ActRecycleView extends BaseActivity {
         list.add(fruit2);
         list.add(fruit3);
         list.add(fruit4);
-        FruitAdapter adapter = new FruitAdapter(list);
-//        mRecyclerView.setAdapter(adapter);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+
+        final FruitAdapter adapter = new FruitAdapter(null);
+
+        final RecyclerView.RecycledViewPool pool = new RecyclerView.RecycledViewPool() {
+            @Override
+            public void clear() {
+                super.clear();
+            }
+
+            @Override
+            public void setMaxRecycledViews(int viewType, int max) {
+                super.setMaxRecycledViews(viewType, max);
+            }
+
+            @Override
+            public int getRecycledViewCount(int viewType) {
+                return super.getRecycledViewCount(viewType);
+            }
+
+            @Nullable
+            @Override
+            public RecyclerView.ViewHolder getRecycledView(int viewType) {
+                return super.getRecycledView(viewType);
+            }
+
+            @Override
+            public void putRecycledView(RecyclerView.ViewHolder scrap) {
+                super.putRecycledView(scrap);
+            }
+        };
+        Log.d(TAG, "POOL hashcode = " + pool.hashCode());
+
+
+        pool.setMaxRecycledViews(0, 30);
+
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(ActRecycleView.this);
         mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(adapter);
 
-        RefreshLayout refreshLayout = (RefreshLayout)findViewById(R.id.refreshLayout);
-        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+
+        FruitAdapter adapter1 = new FruitAdapter(null);
+        for (int i = 0; i < 30; i++) {
+            pool.putRecycledView(adapter1.createViewHolder(mRecyclerView, 0));
+        }
+        //.....
+        Log.d(TAG, "=======================================");
+
+        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setRecycledViewPool(pool);
+
+
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000/*,false*/);//传入false表示刷新失败
+            public void run() {
+                adapter.fruits = list;
+                adapter.notifyDataSetChanged();
+
+
+                RefreshLayout refreshLayout = (RefreshLayout) findViewById(R.id.refreshLayout);
+                refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+                    @Override
+                    public void onRefresh(RefreshLayout refreshlayout) {
+                        refreshlayout.finishRefresh(2000/*,false*/);//传入false表示刷新失败
+                    }
+                });
+                refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+                    @Override
+                    public void onLoadMore(RefreshLayout refreshlayout) {
+                        refreshlayout.finishLoadMore(2000/*,false*/);//传入false表示加载失败
+                    }
+                });
             }
-        });
-        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadMore(2000/*,false*/);//传入false表示加载失败
-            }
-        });
+        }, 2000);
+
     }
 
     class FruitHolder extends RecyclerView.ViewHolder {
         TextView fruitName;
         TextView fruitPrice;
+
 
         public FruitHolder(@NonNull View itemView) {
             super(itemView);
@@ -96,9 +156,13 @@ public class ActRecycleView extends BaseActivity {
 
 
     class FruitAdapter extends RecyclerView.Adapter<FruitHolder> {
-        private List<Fruit> fruits;
+        private List<Fruit> fruits = new ArrayList<Fruit>();
 
         public FruitAdapter(List<Fruit> fruits) {
+            this.fruits = fruits;
+        }
+
+        public void setFruits(List<Fruit> fruits) {
             this.fruits = fruits;
         }
 
@@ -106,7 +170,8 @@ public class ActRecycleView extends BaseActivity {
         @Override
         public FruitHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit_item, parent, false);
-            ALLog.d(TAG, "onCreateViewHolder");
+
+            ALLog.d(TAG, "onCreateViewHolder .... " /*+ ((RecyclerView) parent).getRecycledViewPool().getRecycledViewCount(viewType) */ + " hashcode = " + ((RecyclerView) parent).getRecycledViewPool().hashCode());
             return new FruitHolder(view);
         }
 
@@ -120,6 +185,9 @@ public class ActRecycleView extends BaseActivity {
 
         @Override
         public int getItemCount() {
+            if (fruits == null) {
+                return 0;
+            }
             return fruits.size();
         }
 

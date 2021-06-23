@@ -29,7 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="right"
-        android:text="back" />
+        android:text="back"
+        android:visibility="gone" />
 
 
 </FrameLayout>

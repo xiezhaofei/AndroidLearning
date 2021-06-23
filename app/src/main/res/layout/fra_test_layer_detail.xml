@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_test_parser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="解析背景" />
+
+            <Button
+                android:id="@+id/btn_test_get_invisible_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获取没有展示的无效背景" />
+
+            <Button
+                android:id="@+id/btn_test_get_redundant_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获取多余的view" />
+
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+
+    <FrameLayout
+        android:id="@+id/fl_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/cardview_dark_background">
+
+<!--        <FrameLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:background="@color/cardview_dark_background" />-->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom"
+            android:background="@color/cardview_dark_background" />
+
+
+<!--        <FrameLayout-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:background="@color/colorAccent" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/white"-->
+<!--            android:text="text view" />-->
+
+
+    </FrameLayout>
+
+    <com.android.androidlearning.learningcode.layer.LayerMirrorView
+        android:id="@+id/layer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

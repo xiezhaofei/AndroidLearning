@@ -1,0 +1,29 @@
+// 引入 groovy 和 java 插件
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url 'http://depot.sankuai.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.google.com' }
+        jcenter()
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url "http://mvn.dianpingoa.com/android-nova"
+    }
+    maven {
+        url 'http://depot.sankuai.com/nexus/content/groups/public/'
+    }
+    maven { url 'https://maven.google.com' }
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'com.android.tools.build:gradle:3.0.1'
+}
