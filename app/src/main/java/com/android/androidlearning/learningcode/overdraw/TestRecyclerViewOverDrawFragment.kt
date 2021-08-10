@@ -59,7 +59,7 @@ private class OutViewHolder(view: View, pool: RecyclerView.RecycledViewPool) : R
     init {
         listview.layoutManager = LinearLayoutManager(view.context, RecyclerView.HORIZONTAL, false)
         listview.adapter = adapter
-        listview.layoutManager.isItemPrefetchEnabled
+        (listview.layoutManager as LinearLayoutManager).isItemPrefetchEnabled = true
         listview.setRecycledViewPool(pool)
     }
 
