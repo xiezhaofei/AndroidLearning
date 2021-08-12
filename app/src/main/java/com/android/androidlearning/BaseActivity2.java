@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import com.gyf.immersionbar.ImmersionBar;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * Created by xiezhaofei on 2019-12-04
  * <p>

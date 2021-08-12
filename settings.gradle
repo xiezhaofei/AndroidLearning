@@ -1,4 +1,4 @@
-//include ':buildSrc'
+include ':autofragment'//include ':buildSrc'
 //include ':buildSrc'
 //include ':myapplication'
 //include ':benchmark'

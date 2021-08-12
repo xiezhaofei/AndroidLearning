@@ -9,6 +9,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 
 import com.android.androidlearning.kotlin.KotlinReflect;
 import com.android.androidlearning.learningcode.animation.ViewAnimationFragment;
@@ -30,10 +31,16 @@ import com.android.androidlearning.learningcode.view.TestMyViewFragment;
 import com.android.androidlearning.learningcode.viewevent.ScrollTestFragment;
 import com.android.androidlearning.learningcode.viewpager.TestViewPagerFragment;
 import com.android.androidlearning.utils.AppUtils;
+import com.android.newfragment.AllFragments;
+import com.example.autofragment.Constants;
 
+import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
+
+import kotlin.Pair;
 
 /**
  * Created by xiezhaofei on 2020-02-29
@@ -216,6 +223,36 @@ public class CommonActivity extends BaseActivity2 {
                 KotlinReflect.INSTANCE.reflect();
             }
         });
+
+        AllFragments fragments = new AllFragments();
+        String[] strings = fragments.fragments;
+
+
+        List<Pair<String, Class<?>>> pairs = Constants.getAllFragments();
+        for (Pair<String, Class<?>> pair : pairs) {
+            if (pair == null) {
+                continue;
+            }
+            final Class tmp = pair.getSecond();
+
+            addButton(pair.getFirst(), new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (tmp != null) {
+                        try {
+                            Object object = tmp.newInstance();
+                            startFragment((Fragment) object);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        } catch (InstantiationException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+            });
+
+        }
 
     }
 
